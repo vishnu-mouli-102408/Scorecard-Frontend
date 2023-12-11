@@ -3,9 +3,10 @@ import axios, { AxiosResponse } from "axios";
 import { StockSchema } from "../../models/inputStock";
 
 const Table = () => {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const stockData = async () => {
     const response: AxiosResponse = await axios.get(
-      "http://localhost:3001/api/v1/stocks"
+      `${BACKEND_URL}/api/v1/stocks`
     );
     const data = response.data.data;
     return data;

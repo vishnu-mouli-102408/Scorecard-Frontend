@@ -2,7 +2,6 @@ import { useSetRecoilState } from "recoil";
 import "./searchResults.css";
 import { inputStockDetails } from "../../store/atoms/inputStockDetails";
 import axios, { AxiosResponse } from "axios";
-// import { fetchCurrentMarketPrice } from "../../lib/api";
 
 interface ItemTypes {
   country: string;
@@ -23,11 +22,12 @@ interface ResultsTypes {
 
 const SearchBox = ({ results, setResults }: ResultsTypes) => {
   const setStockDetails = useSetRecoilState(inputStockDetails);
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleClick = async (result: ItemTypes) => {
     let res = `${result.name} - ${result.symbol}`;
     const { data }: AxiosResponse = await axios.get(
-      `http://localhost:3001/api/v1/cmp/${result.symbol}`
+      `${BACKEND_URL}/api/v1/cmp/${result.symbol}`
     );
 
     setStockDetails((prev) => ({

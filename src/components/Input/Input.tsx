@@ -12,6 +12,8 @@ const Input = () => {
   const [results, setResults] = useState<Result>([]);
   const inputStockDetail = useRecoilValue(inputStockDetails);
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleChange = (value: string) => {
     setStockDetails((prev) => ({
       ...prev,
@@ -65,7 +67,7 @@ const Input = () => {
     if (validatedData.success) {
       try {
         const response = await axios.post(
-          "http://localhost:3001/api/v1/stocks",
+          `${BACKEND_URL}/api/v1/stocks`,
           validatedData.data
         );
         console.log(response?.data.success);
