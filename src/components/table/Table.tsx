@@ -5,7 +5,7 @@ import { StockSchema } from "../../models/inputStock";
 const Table = () => {
   const stockData = async () => {
     const response: AxiosResponse = await axios.get(
-      "http://localhost:3001/api/v1/stocks"
+      process.env.BACKEND_URL + "/api/v1/stocks"
     );
     const data = response.data.data;
     return data;

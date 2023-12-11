@@ -65,7 +65,7 @@ const Input = () => {
     if (validatedData.success) {
       try {
         const response = await axios.post(
-          "http://localhost:3001/api/v1/stocks",
+         process.env.BACKEND_URL + "/api/v1/stocks",
           validatedData.data
         );
         console.log(response?.data.success);

@@ -27,7 +27,7 @@ const SearchBox = ({ results, setResults }: ResultsTypes) => {
   const handleClick = async (result: ItemTypes) => {
     let res = `${result.name} - ${result.symbol}`;
     const { data }: AxiosResponse = await axios.get(
-      `http://localhost:3001/api/v1/cmp/${result.symbol}`
+      `${process.env.BACKEND_URL}/api/v1/cmp/${result.symbol}`
     );
 
     setStockDetails((prev) => ({
